@@ -25,6 +25,15 @@ class App extends React.Component {
     this.setState({burgers: sampleBurgers});
   };
 
+  addToOrder = (key) => {
+    // 1. Делаем копию объекта state
+    const order = {...this.state.order}
+    // 2. Доавить ключ к  заказу со значением 1, либо обновить текущее значение
+    order[key] = order[key] + 1 ||  1;
+    // 3. Записываем наш новый объект order в state
+    this.setState({order});
+  };
+
   render() {
     return (
       <div className="burger-paradise">
@@ -35,6 +44,7 @@ class App extends React.Component {
               return <Burger
                 key={key}
                 index={key}
+                addToOrder={this.addToOrder}
                 details={this.state.burgers[key]}
               />
             })}
