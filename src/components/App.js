@@ -4,11 +4,25 @@ import Order from './Order';
 import MenuAdmin from './MenuAdmin';
 import Burger from './Burger';
 import sampleBurgers from '../sample-burgers';
+import base from '../base';
 
 class App extends React.Component {
   state = {
     burgers: {},
     order: {},
+  };
+
+  componentDidMount() {
+    const {params} = this.props.match;
+
+    this.ref = base.syncState(`${params.restaurantid}/burgers`, {
+      context: this,
+      state: 'burgers',
+    });
+  };
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   };
 
   addBurger = (burger) => {
