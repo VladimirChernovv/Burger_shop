@@ -16,7 +16,7 @@ class App extends React.Component {
     const {params} = this.props.match;
 
     const localStorageRef = localStorage.getItem(params.restaurantid);
-    
+
     if (localStorageRef) {
       this.setState({order: JSON.parse(localStorageRef)});
     }
@@ -39,9 +39,22 @@ class App extends React.Component {
   addBurger = (burger) => {
     // 1. Делаем копию объекта state
     const burgers = {...this.state.burgers};
+
     // 2.Добавить новый бургер в переменную burgers
     burgers[`burger${Date.now()}`] = burger;
+
     // 3. Записать наш новый объект burgers в state
+    this.setState({burgers});
+  };
+
+  updateBurger = (key, updatedBurger) => {
+    // 1. Делаем копию объекта state
+    const burgers = {...this.state.burgers};
+
+    // 2. Обновляем нужный burger
+    burgers[key] = updatedBurger;
+
+    // 3. Записываем наш обновлённый burgers[key] в state
     this.setState({burgers});
   };
 
@@ -79,6 +92,8 @@ class App extends React.Component {
         <MenuAdmin
           addBurger={this.addBurger}
           loadSampleBurgers={this.loadSampleBurgers}
+          burgers={this.state.burgers}
+          updateBurger={this.updateBurger}
         />
       </div>
     );

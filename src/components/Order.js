@@ -22,8 +22,8 @@ class Order extends React.Component {
     return <li key={key}>
       <span>
         <span>{count}</span>
-        шт. {burger.name}
-        <span>{count * burger.price} ₽</span>
+        шт. {burger.name} 
+        <span> {count * burger.price} ₽</span>
         <button className="cancelItem">&times;</button>
       </span>
     </li>
