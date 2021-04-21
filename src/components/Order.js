@@ -5,8 +5,11 @@ class Order extends React.Component {
   renderOrder = (key) => {
     const burger = this.props.burgers[key];
     const count = this.props.order[key];
-
     const isAvailable = burger && burger.status === 'available';
+
+    // Пока у нас нет данных о бургерах мы их не рендэрим
+    if (!burger) return null;
+
     if (!isAvailable) {
       return (
         <li className="unavailable" key={key}>
