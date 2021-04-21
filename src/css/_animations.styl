@@ -4,8 +4,8 @@
   exit
 */
 
-.order-enter 
-  transition: 0.5s;
+.order-enter
+  transition: .5s;
   transform: translateX(-120%);
   max-height: 0;
   &.order-enter-active
@@ -13,21 +13,21 @@
     max-height: 60px;
     padding: 2rem 0 !important;
 
-.order-exit 
-  transition: 0.5s;
+.order-exit
+  transition: .5s;
   transform: translateX(0);
   &.order-exit-active
     transform: translateX(120%);
     padding: 0;
 
 .count-enter
-  transition: 0.5s;
+  transition: .5s;
   transform: translateY(100%);
   &.count-enter-active
     transform: translateY(0);
 
 .count-exit
-  transition: 0.5s;
+  transition: .5s;
   transform: translateY(0);
   position: absolute;
   left: 0;
